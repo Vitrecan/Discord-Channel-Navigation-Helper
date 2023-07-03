@@ -4,19 +4,8 @@ if !A_IsAdmin {
     Run '*RunAs "' A_AhkPath '" "' A_ScriptFullPath '"'
     ExitApp
 }
-
 ; Keeps script permanently running
 Persistent
-
-; Ensures that there is only a single instance of this script running.
-#SingleInstance Force
-
-; Makes a script unconditionally use its own folder as its working directory.
-; Ensures a consistent starting directory.
-SetWorkingDir A_ScriptDir
-
-; sets title matching to search for "containing" instead of "exact"
-SetTitleMatchMode 2
 
 GroupAdd "saveReload", "A_ScriptName"
 
@@ -46,7 +35,7 @@ if WinActive("ahk_group saveReload") {
 ; Disable Caps Lock key
 SetCapsLockState "AlwaysOff"
 
-if WinActive("ahk_exe firefox.exe") {
+#HotIf WinActive("Firefox")
     CapsLock & f::Send "Vincent{Tab}"
 
     CapsLock & m::Send "Le{Tab}"
@@ -66,7 +55,6 @@ if WinActive("ahk_exe firefox.exe") {
     CapsLock & u::Send "University of Technology Sydney{Tab}"
 
     CapsLock & d::Send "Software Engineering{Tab}"    
-}
 
 ;============================== ini Section ==============================
 ; Do not remove /* or */ from this section. Only modify if you're
