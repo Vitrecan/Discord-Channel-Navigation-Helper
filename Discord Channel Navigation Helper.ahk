@@ -1,6 +1,4 @@
-﻿#Requires AutoHotkey v2.0
-
-#SingleInstance Force
+﻿#SingleInstance Force
 SetWorkingDir A_ScriptDir
 #d::
 {
@@ -10,5 +8,7 @@ SetWorkingDir A_ScriptDir
     Send "looking-for-clanmates"
     Sleep 1000
     Send "{Enter}"
+    Sleep 1500
+    Send "/post"
 }
 return
